@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+.centro {
+	background-color: #fafafa;
+	margin: 1rem;
+	padding: 1rem;
+	border: 2px solid #ccc;
+	text-align: center;
+}
+
+.centroDos {
+background-color: #00ffff;
+margin: 1rem;
+padding: 1rem;
+border: 2px solid #ccc;
+text-align: center;
+}

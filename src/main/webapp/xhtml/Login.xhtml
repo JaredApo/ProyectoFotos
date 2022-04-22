@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+
+	<h:head>
+		<title>Login</title>
+		<h:outputScript library="tema1" name="js/eventos.js" />
+	</h:head>
+	<h:body>
+		<p:growl id="growl" showDetail="false" life="3000" />
+		<center>
+			<p:card style="width: 16rem; margin-bottom: 1em;height:15rem;">
+				<div class="car">
+					<p:commandButton id="isesion" onclick="PF('dlg').show();"
+						value="Iniciar sesion" />
+					<br /> <br /> <br /> <br />
+					<p:commandButton id="registro" onclick="PF('dlg2').show();"
+						value="Registrarse" />
+				</div>
+			</p:card>
+		</center>
+
+		<p:dialog id="dialog1" resizable="false" closable="false"
+			header="Credenciales" widgetVar="dlg" modal="true">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="16">
+					<h:outputLabel for="usuario" value="Usuario:" />
+					<p:inputText id="usuario" value="#{Credenciales.usuario}"
+						required="true" label="Usuario">
+					</p:inputText>
+					<h:outputLabel for="clave" value="Clave:" />
+					<p:password id="clave" value="#{Credenciales.clave}"
+						required="true" label="Clave">
+					</p:password>
+					<p:commandButton id="sesion" value="Enviar"
+						action="#{Credenciales.iniciarSesion()}" update=":growl" />
+					<p:commandButton id="csesion" onclick="cerrarDialogo()"
+						value="Cerrar" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+
+		<p:dialog id="dialog2" resizable="false" closable="false"
+			header="Registro" widgetVar="dlg2" modal="true">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="16">
+					<h:outputLabel for="usuario" value="Usuario:" />
+					<p:inputText id="usuario" value="#{Credenciales.usuario}"
+						required="true" label="Usuario">
+					</p:inputText>
+					<h:outputLabel for="clave" value="Clave:" />
+					<p:password id="clave" value="#{Credenciales.clave}"
+						required="true" label="Clave">
+					</p:password>
+					<p:commandButton id="sesion" value="Enviar"
+						action="#{Credenciales.registrarUsuario()}" update=":growl"
+						onclick="PF('dlg2').hide();" />
+					<p:commandButton id="cregistro" onclick="PF('dlg2').hide();"
+					value="Cerrar" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</h:body>
+</f:view>
+</html>

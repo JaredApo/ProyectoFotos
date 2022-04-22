@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+	<h:head>
+	</h:head>
+	<h:body>
+		<ui:composition template="/Plantilla.xhtml">
+			<ui:define name="contenido">
+				<div class="grid">
+					<p:card style="width: 16rem; margin-bottom: 1em;height:7rem;">
+						<f:facet name="title">Nombre:</f:facet>
+						<p:outputLabel value="#{datos.usuario}" />
+					</p:card>
+					<p:card style="width: 16rem; margin-bottom: 1em;height:7rem;">
+						<f:facet name="title">Apellido Paterno:</f:facet>
+						<p:outputLabel value="#{datos.clave}" />
+					</p:card>
+					<p:card style="width: 20rem; margin-bottom: 1em;height:7rem;">
+						<f:facet name="title">ID sesión:</f:facet>
+						<p:outputLabel value="#{usuario.sesionNavegdor}" />
+					</p:card>
+				</div>
+				</ui:define>
+		</ui:composition>
+	</h:body>
+</f:view>
+</html>

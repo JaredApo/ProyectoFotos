@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+	<h:head>
+	</h:head>
+	<h:body>
+		<ui:composition template="/Plantilla.xhtml">
+			<ui:define name="contenido">
+				<p:dataTable id="imagenes" var="datos"
+					value="#{Imagenes.rutaImagenes}">
+					<f:facet name="header">Descargas</f:facet>
+					<p:column headerText="Ruta">
+						<h:outputText value="#{datos}" />
+					</p:column>
+					<p:column headerText="Descarga">
+						<h:form>
+							<p:commandButton id="descarga" value="Descargar"
+								onclick="PrimeFaces.monitorDownload(start,stop);">
+								<p:fileDownload value="#{Imagenes.descargaImagen(datos)}" />
+							</p:commandButton>
+						</h:form>
+					</p:column>
+					<p:column headerText="Previsualizar">
+						<h:form>
+							<p:commandButton id="previsualizar" value="Previsualizar" update="imagen"
+								action="#{Imagenes.mandaImagen(datos)}" onclick="PF('dlg').show();">
+							</p:commandButton>
+						</h:form>
+					</p:column>
+				</p:dataTable>
+				<p:dialog id="dialog" resizable="false" closable="false"
+					header="Previsualizacion" widgetVar="dlg" modal="true">
+					<p:graphicImage cache="false" id="imagen"
+						value="#{Imagenes.imagen}" width="60%" height="60%"></p:graphicImage><br />
+					<p:button id="cerrar" onclick="PF('dlg').hide();" value="Cerrar" />
+				</p:dialog>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</f:view>
+</html>
